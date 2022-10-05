@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './d12.vue'
+import App from './work1.vue'
 import "bootstrap/dist/css/bootstrap.css"
 
 Vue.config.productionTip = false
