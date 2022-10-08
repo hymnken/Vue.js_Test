@@ -5,15 +5,10 @@
     fontColor="white" 
     title="TabBar"
     ></MyHeader>
-
     <div class="main">
       <component :is="comName">
-
       </component>
     </div>
-
-
-
 
     <MyTabBar :arr="tabList"
     @changeCom="changeConFn"></MyTabBar>
