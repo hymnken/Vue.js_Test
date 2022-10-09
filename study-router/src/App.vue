@@ -1,11 +1,10 @@
 <template>
   <div>
     <div class="footer_wrap">
-      <router-link to="/find">发现音乐</router-link>
-      <router-link to="/my">我的音乐</router-link>
-      <router-link to="/part?name=xiaochuan">朋友----xiaochuan</router-link>
-      <router-link to="/part/xiaozhi">朋友----xiaozhi</router-link>
-
+      <span @click="btn('/find', 'Find')">发现音乐</span>
+      <span @click="btn('/my', 'My')">我的音乐</span>
+      <span @click="oneBtn">朋友-xiaochuan</span>
+      <span @click="twoBtn">朋友-xiaozhi</span>
     </div>
     <div class="top">
       <router-view></router-view>
@@ -14,7 +13,32 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    btn(targetPath, targetName) {
+      this.$router.push({
+        // path:targetPath
+        name: targetName,
+      });
+    },
+    oneBtn() {
+      this.$router.push({
+        name: "Part",
+        params: {
+          username: "xiaochuan",
+        },
+      });
+    },
+    twoBtn() {
+      this.$router.push({
+        name: "Part",
+        query: {
+          name: "xiaozhixiaozhi",
+        },
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -28,7 +52,7 @@ export default {};
   background-color: #333;
   color: #ccc;
 }
-.footer_wrap a {
+.footer_wrap span {
   flex: 1;
   text-decoration: none;
   padding: 20px 0;
@@ -37,14 +61,14 @@ export default {};
   color: #ccc;
   border: 1px solid black;
 }
-.footer_wrap a:hover {
+.footer_wrap span:hover {
   background-color: #555;
 }
 .top {
   padding-top: 62px;
 }
 
-.footer_wrap .router-link-active{
+.footer_wrap .router-link-active {
   color: white;
   background: black;
 }
