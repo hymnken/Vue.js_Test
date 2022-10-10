@@ -1,36 +1,36 @@
 <template>
   <div>
     <p class="title">推荐歌单</p>
-    <van-row gutter="6">
+    <van-row gutter="4">
       <van-col span="8" v-for="obj in reList" :key="obj.id">
-        <van-image width="100%" height="3rem" fit="cover" :src="obj.picUrl" />
+        <van-image width="100%" height="3rem" fit="cover" 
+        :src="obj.picUrl" />
         <p class="song_name">{{ obj.name }}</p>
       </van-col>
     </van-row>
 
     <p class="title">最新的音乐</p>
-    <van-cell
-      center
-      :title="obj.name"
-      :label="obj.song.artists[0].name + ' -- ' + obj.name"
-      v-for="obj in songList"
+      <SongItem v-for="obj in songList" 
       :key="obj.id"
-    >
-      <template #right-icon>
-        <van-icon name="play" size="0.7rem" />
-      </template>
-    </van-cell>
+      :name="obj.name"
+      :author="obj.song.artists[0].name"
+      :id="obj.id"></SongItem>
   </div>
 </template>
 
 <script>
+import SongItem from "@/components/SongItem.vue"
 import { recommendMusicAPI, newMusicAPI } from "@/api";
 export default {
   data() {
     return {
       reList: [],
       songList: [],
+      resultList:[]
     };
+  },
+  components: {
+    SongItem
   },
   async created() {
     const res = await recommendMusicAPI({

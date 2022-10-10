@@ -2,10 +2,13 @@
   <div>
     <van-nav-bar
       :title="activeTitle"
+      fixed
     />
 
-    <!-- erjiluyou -->
+      <div class="main">    <!-- erjiluyou -->
     <router-view></router-view>
+    </div>
+
 
     <van-tabbar route>
       <van-tabbar-item replace to="/layout/home" icon="home-o"
